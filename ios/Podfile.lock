@@ -1,4 +1,5 @@
 PODS:
+  - AeroGear-UPS-Client (3.1.0)
   - boost-for-react-native (1.63.0)
   - CocoaAsyncSocket (7.6.4)
   - CocoaLibEvent (1.0.0)
@@ -299,6 +300,7 @@ PODS:
     - Yoga (~> 1.14)
 
 DEPENDENCIES:
+  - AeroGear-UPS-Client (from `/Users/ziccardi/work/aerogear/aerogear-ios-push`)
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
   - FBLazyVector (from `../node_modules/react-native/Libraries/FBLazyVector`)
   - FBReactNativeSpec (from `../node_modules/react-native/Libraries/FBReactNativeSpec`)
@@ -364,6 +366,8 @@ SPEC REPOS:
     - YogaKit
 
 EXTERNAL SOURCES:
+  AeroGear-UPS-Client:
+    :path: "/Users/ziccardi/work/aerogear/aerogear-ios-push"
   DoubleConversion:
     :podspec: "../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec"
   FBLazyVector:
@@ -418,6 +422,7 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
+  AeroGear-UPS-Client: 8782402021c17b1140e58663bf4cdb869f3210f5
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
   CocoaAsyncSocket: 694058e7c0ed05a9e217d1b3c7ded962f4180845
   CocoaLibEvent: 2fab71b8bd46dd33ddb959f7928ec5909f838e3f
@@ -453,10 +458,10 @@ SPEC CHECKSUMS:
   React-RCTText: fae545b10cfdb3d247c36c56f61a94cfd6dba41d
   React-RCTVibration: 4356114dbcba4ce66991096e51a66e61eda51256
   ReactCommon: ed4e11d27609d571e7eee8b65548efc191116eb3
-  RNCPushNotificationIOS: a0b6894f4ad9b93d9dac467fdf4d055660ac8a0d
+  RNCPushNotificationIOS: a38f0b8c4f6f5226cd1d8eeb21ab5670f4a09892
   Yoga: 3ebccbdd559724312790e7742142d062476b698e
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: 74bc6cd1170525af7878186965f245601a0dfbb4
+PODFILE CHECKSUM: fe3022e9647a5887f76b677a8449ccd9d3e54ab8
 
 COCOAPODS: 1.8.4
