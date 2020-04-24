@@ -15,6 +15,7 @@
 #import <FlipperKitReactPlugin/FlipperKitReactPlugin.h>
 
 #import "../PushBridge/NotificationEmitter.h"
+#import "../PushBridge/RNUnifiedPush.h"
 
 static void InitializeFlipper(UIApplication *application) {
   FlipperClient *client = [FlipperClient sharedClient];
@@ -70,24 +71,7 @@ static void InitializeFlipper(UIApplication *application) {
 // Required for the register event.
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
-// [RNCPushNotificationIOS didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
-  
-  DeviceRegistration *d = [[DeviceRegistration alloc] initWithServerURL:[NSURL URLWithString:@"http://192.168.178.21:9999"]];
-  [d registerWithClientInfo:^(id<ClientDeviceInformation> clientInfo) {
-    [clientInfo setDeviceToken:deviceToken];
-    [clientInfo setVariantID:@"545CCD04-56F5-466D-B510-E594FEFD166A"];
-    [clientInfo setVariantSecret:@"05277A01-15D6-4698-8D37-1D820DE35522"];
-    
-    UIDevice *currentDevice = [UIDevice currentDevice];
-    // set some 'useful' hardware information params
-    [clientInfo setOperatingSystem:[currentDevice systemName]];
-    [clientInfo setOsVersion:[currentDevice systemVersion]];
-    [clientInfo setDeviceType:[currentDevice model]];
-  } success:^{
-    NSLog(@"UnifiedPush Server registration worked");
-  } failure:^(NSError * err) {
-    NSLog(@"UnifiedPush Server registration Error: %@", err);
-  }];
+  [RNUnifiedPush didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
 }
 
 // Required for the notification event. You must call the completion handler after handling the remote notification.

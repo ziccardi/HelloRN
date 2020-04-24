@@ -6,7 +6,7 @@
  * @flow strict-local
  */
 
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -16,9 +16,33 @@ import {
   StatusBar,
   FlatList,
   Alert,
+  NativeModules,
+  NativeEventEmitter,
 } from 'react-native';
 
-import NotifService from './NotifService';
+const RNUnifiedPush = NativeModules.RNUnifiedPush;
+
+RNUnifiedPush.initialize(
+  {
+    url: 'http://192.168.178.21:9999',
+    variantId: '545CCD04-56F5-466D-B510-E594FEFD166A',
+    secret: '05277A01-15D6-4698-8D37-1D820DE35522',
+  },
+  (err, res) => {
+    if (err) {
+      console.log('Failed : ', err);
+    } else {
+      console.log ('Success!!! ', res);
+    }
+  },
+);
+
+//const eventEmitter = new NativeEventEmitter(NotificationEmitter);
+
+// const subscription = eventEmitter.addListener(
+//   'onUPSPushNotificationReceived',
+//   (msg) => console.log('Event received:', msg),
+// );
 
 import {
   Header,
@@ -45,10 +69,6 @@ function Item({title}) {
 export class App extends Component {
   constructor(props) {
     super(props);
-    this.notif = new NotifService(
-      this.onRegister.bind(this),
-      this.onNotif.bind(this),
-    );
   }
   render() {
     console.log('Rendering');
@@ -70,14 +90,14 @@ export class App extends Component {
   }
 
   onRegister(token) {
-    Alert.alert('Registered !', JSON.stringify(token));
+    Alert.alert('YAY! Registered !', JSON.stringify(token));
     console.log(token);
     this.setState({registerToken: token.token, fcmRegistered: true});
   }
 
   onNotif(notif) {
     console.log(notif);
-    Alert.alert(notif.title, notif.message);
+    Alert.alert(notif.title, `Here it is: ${notif.message}`);
   }
 }
 
