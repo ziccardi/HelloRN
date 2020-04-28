@@ -14,8 +14,7 @@
 #import <SKIOSNetworkPlugin/SKIOSNetworkAdapter.h>
 #import <FlipperKitReactPlugin/FlipperKitReactPlugin.h>
 
-#import "../PushBridge/NotificationEmitter.h"
-#import "../PushBridge/RNUnifiedPush.h"
+#import <RnUnifiedPush.h>
 
 static void InitializeFlipper(UIApplication *application) {
   FlipperClient *client = [FlipperClient sharedClient];
@@ -79,7 +78,7 @@ static void InitializeFlipper(UIApplication *application) {
 fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
 {
   NSLog(@"Notification");
-  [NotificationEmitter emitEvent:userInfo];
+//  [NotificationEmitter emitEvent:userInfo];
 }
 // Required for the registrationError event.
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error

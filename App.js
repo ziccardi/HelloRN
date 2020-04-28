@@ -20,9 +20,13 @@ import {
   NativeEventEmitter,
 } from 'react-native';
 
-const RNUnifiedPush = NativeModules.RNUnifiedPush;
+import RNUnifiedPush from 'RNUnifiedPush';
 
-RNUnifiedPush.initialize(
+const ups = new RNUnifiedPush();
+
+// const RNUnifiedPush = NativeModules.RNUnifiedPush;
+
+ups.init(
   {
     url: 'http://192.168.178.21:9999',
     variantId: '545CCD04-56F5-466D-B510-E594FEFD166A',
@@ -30,9 +34,9 @@ RNUnifiedPush.initialize(
   },
   (err, res) => {
     if (err) {
-      console.log('Failed : ', err);
+      console.log('UPS JS Failed : ', err);
     } else {
-      console.log ('Success!!! ', res);
+      console.log('UPS JS Success!!! ', res);
     }
   },
 );

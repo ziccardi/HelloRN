@@ -45,9 +45,6 @@ def flipper_post_install(installer)
 end
 
 target 'HelloWorldReactNative' do
-  # UnifiedPush Pods
-  pod 'AeroGear-UPS-Client', :path => '/Users/ziccardi/work/aerogear/aerogear-ios-push', :modular_headers => true
-
   # Pods for HelloWorldReactNative
   pod 'FBLazyVector', :path => "../node_modules/react-native/Libraries/FBLazyVector"
   pod 'FBReactNativeSpec', :path => "../node_modules/react-native/Libraries/FBReactNativeSpec"
@@ -88,8 +85,8 @@ target 'HelloWorldReactNative' do
   use_native_modules!
 use_frameworks!
 $static_framework = ['FlipperKit', 'Flipper', 'Flipper-Folly',
-    'CocoaAsyncSocket', 'ComponentKit', 
-    'Flipper-PeerTalk', 'Flipper-RSocket', 
+    'CocoaAsyncSocket', 'ComponentKit',
+    'Flipper-PeerTalk', 'Flipper-RSocket',
     'CocoaLibEvent', 'openssl-ios-bitcode', 'boost-for-react-native']
 
   pre_install do |installer|
@@ -97,7 +94,7 @@ $static_framework = ['FlipperKit', 'Flipper', 'Flipper-Folly',
     installer.pod_targets.each do |pod|
         if $static_framework.include?(pod.name)
           def pod.build_type;
-            Pod::Target::BuildType.static_library
+            Pod::BuildType.static_library
           end
         end
       end
